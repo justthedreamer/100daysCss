@@ -1,0 +1,236 @@
+:root{
+    --backgroundColor: #191724;
+    --fontColor : #e0def4;
+    --borderColor: #908caa;
+
+    --sliderMargin: .7rem;
+
+    --egypt-background-color: #7DDFFC;
+    --egypt-sand-color: #F0DE75;
+    --egypt-sun-color: #FFEF00;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: var(--backgroundColor);
+    color: var(--fontColor);
+    border-color: var(--borderColor);
+}
+.wrapper{
+    width: 100%;
+    height: 100vh;
+}
+.flex-center{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger{
+    display: inline-block;
+    width: auto;
+    border-radius: 1em;
+    padding: .5em;
+}
+.hamburger:hover{
+    cursor: pointer;
+}
+.slide{
+    width: 40px;
+    margin: var(--sliderMargin) auto;
+    height: 5px;
+    border-radius: .5em;
+    background-color: var(--fontColor);
+    transition: all 2s;
+}
+.slide-top-active{
+    animation: slide-top-animation .5s both linear ;
+}
+.slide-top-inactive {
+    animation: slide-top-reverse-animation 0.5s both linear;
+  }
+@keyframes slide-top-animation{
+    0%{
+    }
+    50%{
+        transform: translate(0,calc(100% + var(--sliderMargin))) rotate(0deg);
+    }
+    60%{
+        transform: translate(0,calc(100% + var(--sliderMargin))) rotate(0deg);
+    }
+    100%{
+        transform: translate(0,calc(100% + var(--sliderMargin))) rotate(225deg);
+    }
+}
+@keyframes slide-top-reverse-animation {
+    0% {
+      transform: translate(0, calc(100% + var(--sliderMargin))) rotate(45deg);
+    }
+    50% {
+      transform: translate(0, calc(100% + var(--sliderMargin))) rotate(0deg);
+    }
+    100% {
+      /* Stan końcowy odwrotnej animacji, jak wcześniej */
+    }
+}
+.slide-middle-active{
+    animation : slide-middle-animation .3s both linear;
+}
+.slide-middle-inactive{
+    animation : slide-middle-reverse-animation .7s both ease-in ;
+}
+@keyframes slide-middle-animation {
+    from{
+    }
+    to{
+        width: 0px;
+    }
+}
+@keyframes slide-middle-reverse-animation {
+   0%{width: 0;}
+   100%{}
+}
+.slide-bottom-active{
+    animation: slide-bottom-animation .5s both linear ;
+}
+.slide-bottom-inactive{
+    animation: slide-bottom-reverse-animation .5s both linear ;
+}
+@keyframes slide-bottom-animation{
+    0%{
+    }
+    50%{
+        transform: translate(0,calc(-100% - var(--sliderMargin))) rotate(0deg);
+    }
+    60%{
+        transform: translate(0,calc(-100% - var(--sliderMargin))) rotate(0deg);
+    }
+    100%{
+        transform: translate(0,calc(-100% - var(--sliderMargin))) rotate(-45deg);
+    }
+}
+@keyframes slide-bottom-reverse-animation{
+    0%{
+        transform: translate(0,calc(-100% - var(--sliderMargin))) rotate(-45deg);
+    }
+    50%{
+        transform: translate(0,calc(-100% - var(--sliderMargin))) rotate(0deg);
+    }
+    100%{
+    }
+}
+
+
+.egypt{
+    position: relative;
+    border-radius: 50%;
+    width: 20rem;
+    height: 20rem;
+    margin-inline: auto;
+
+    overflow: hidden;
+}
+.egypt-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--egypt-background-color);
+}
+
+.pyramide-left{
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    transform: translate(-50%,0);
+    width: 60%;
+    height: 40%;
+    background: #F4F4F4;
+    clip-path: polygon(0% 100%, 90% 100%, 50% 0%);
+
+    z-index: 1;
+}
+.pyramide-right{
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    width: 40%;
+    height: 40%;
+    background: #888;
+    z-index: 0;
+    clip-path: polygon(100% 100%, 0% 0%, 0% 100%);
+}
+.sand{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--egypt-sand-color);
+    height: 40%;
+    width: 100%;
+}
+.sun{
+    position: absolute;
+    transform: translate(-50%,0);
+    top: 40%;
+    left: -40px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--egypt-sun-color);
+    border-radius: 50%;
+    z-index: 0;
+
+    animation: sun-goes-down 4s infinite;
+}
+@keyframes sun-goes-down{
+    0% {
+		background: #F57209;
+        top: 40%;
+        left: -40px;
+    }
+	
+	30% {
+		background: #FFEF00;
+        left: 30%;
+        top: 8%;
+	}
+    70%{
+        background: #FFEF00;
+    }
+    100%{
+		background: #F57209;
+        left: calc(100% + 40px);
+        top: 25%;
+    }
+}
+
+.pyramide-shadow{
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-43%,0);
+    clip-path: polygon(100% 0%, 0% 0%, 100% 0%);
+    background: black;
+    opacity: .1;
+    animation: pyramide-shadow-animation 4s infinite;
+
+    z-index: 4;
+}
+@keyframes pyramide-shadow-animation {
+    0%{
+        clip-path: polygon(100% 0%, 0% 0%, 100% 0%);
+    }
+    30%{
+        clip-path: polygon(100% 0%, 0% 0%, 80% 20%);
+    }
+    90%{
+        clip-path: polygon(100% 0%, 0% 0%, 0% 0%);
+    }
+  
+}

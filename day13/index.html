@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Day 13</title>
+</head>
+<body>
+    <div class="frame">
+        <div class="profile">
+            <img class="image" src="https://100dayscss.com/codepen/13-1.jpg"" alt="girl-with-camera">
+            <div class="overlay"></div>
+            <div class="plus"></div>
+        </div>
+
+        <div class="profile">
+            <img class="image" src="https://100dayscss.com/codepen/13-2.jpg"" alt="girl-with-camera">
+            <div class="overlay"></div>
+            <div class="plus"></div>
+        </div>
+
+        <div class="profile">
+            <img class="image" src="https://100dayscss.com/codepen/13-3.jpg"" alt="girl-with-camera">
+            <div class="overlay"></div>
+            <div class="plus"></div>
+        </div>
+
+        <div class="profile">
+            <img class="image" src="https://100dayscss.com/codepen/13-4.jpg"" alt="girl-with-camera">
+            <div class="overlay"></div>
+            <div class="plus"></div>
+        </div>
+
+        <div id="detail-1" class="detail">
+            <div class="close">
+            </div>
+            <div class="header">
+                <img src="https://100dayscss.com/codepen/13-1-header.jpg"" alt="mountain view">
+            </div>
+
+            <div class="image">
+                <img src="https://100dayscss.com/codepen/13-1.jpg" alt="girl with scull">
+            </div>
+
+            <div class="info">
+                <div class="name">Julia Toth</div>
+                <div class="action">
+                    <div class="btn">
+                        &phone;
+                    </div>
+                    <div class="btn">
+                        &#9993;
+                    </div>
+                    <div class="btn">
+                        &#10084;
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <script>
+        const detail = document.querySelector('.detail');
+
+        const profile = document.querySelectorAll('.profile')
+       profile.forEach((profile)=>{
+            profile.addEventListener('click',function(e){
+                detail.classList.add('active')
+            });
+       })
+
+       const close = document.querySelector('.close');
+       close.addEventListener('click',function(){
+            detail.classList.remove('active');
+       });
+       
+    </script>
+</body>
+</html>
